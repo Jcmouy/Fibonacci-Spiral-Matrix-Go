@@ -25,6 +25,13 @@ Angular UI | http://localhost:5000 | Fibonacci Spiral Matrix APP Project
 Swagger UI | http://localhost:8080/swagger/index.html | Fibonacci Spiral Matrix API OpenAPI Docs
 Jaeger UI | http://localhost:16686 | Opentracing Dashboard
 
+![2022-05-28 20_55_25-Swagger UI](https://user-images.githubusercontent.com/10815551/170846432-0e58c46c-5ee5-403f-8a72-87f60fd23290.png)
+
+![2022-05-28 20_56_13-Swagger UI](https://user-images.githubusercontent.com/10815551/170846436-1e7d450f-149d-479d-a611-3108e796e1ed.png)
+
+![2022-05-28 20_56_27-Swagger UI](https://user-images.githubusercontent.com/10815551/170846441-e77e7ec7-d347-4168-a20f-862f348ea483.png)
+
+![2022-05-28 20_56_51-Swagger UI](https://user-images.githubusercontent.com/10815551/170846442-a805ffdd-8301-4ca0-815c-267f176dd6e1.png)
 
 # CAPTURE
 
