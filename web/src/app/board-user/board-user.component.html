@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mrgnbtm">
+            <h1 style="font-weight: bold">Fibonacci Spiral</h1>
+            <h6 style="margin-top: 20px">Matrix Properties</h6>
+            <form [formGroup]="matrixForm" (ngSubmit)="onSubmit()">
+                <table class="form-Table">
+                    <tbody>
+                    <tr mdbTableCol>
+                        <td class="labelTd" id="initalTd" >
+                            <label style="padding-top: 8px;">Numbers of Rows</label>
+                        </td>
+                        <td style="padding: 0px">
+                            <input type="number" class="form-control" formControlName="numRows" id="rowsInput" placeholder="Number of Rows">
+                        </td>
+                        <td class="labelTd">
+                            <label style="padding-top: 8px;">Numbers of Columns</label>
+                        </td>
+                        <td style="padding: 0px">
+                            <input type="number" class="form-control" formControlName="numColumns" id="columnsInput" placeholder="Number of Columns">
+                        </td>
+                        <td style="padding-left: 0px; border-radius: unset;">
+                            <button type="submit" id="buttonCalculate" [disabled]="!matrixForm.valid" class="btn btn-secondary">Calculate</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <app-rows *ngIf="arrayNumbers.length !== 0" [rows]="arrayNumbers"></app-rows>
+            </form>
+        </div>
+    </div>
+</div>

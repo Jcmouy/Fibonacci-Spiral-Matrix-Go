@@ -1,0 +1,364 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the fibonacci spiral matrix restful api server.",
+        "title": "Fibonacci Spiral Matrix API",
+        "contact": {},
+        "version": "1.0.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/api/status": {
+            "get": {
+                "description": "Get api pulse status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Health Check"
+                ],
+                "summary": "Check api status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.HealthOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/spiral": {
+            "get": {
+                "description": "Get matrix by row and column",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "matrix"
+                ],
+                "summary": "Fetch a spiral matrix",
+                "parameters": [
+                    {
+                        "description": "Get spiral matrix",
+                        "name": "matrix",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.MatrixInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.FibonacciSpiralMatrixDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "description": "Login a user by username and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "login"
+                ],
+                "summary": "Login a user",
+                "parameters": [
+                    {
+                        "description": "Login user",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fibonacci-spiral-matrix-go_internal_api_handler.LoginPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/fibonacci-spiral-matrix-go_internal_api_handler.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/signup": {
+            "post": {
+                "description": "SignUp a user with field email, username, password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "SignUp a user",
+                "parameters": [
+                    {
+                        "description": "Insert user",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SignupRequestDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.ErrorOutput": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.FibonacciSpiralMatrixDto": {
+            "type": "object",
+            "properties": {
+                "rows": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "dto.HealthOutput": {
+            "type": "object",
+            "properties": {
+                "details": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
+        "dto.MatrixInput": {
+            "type": "object",
+            "required": [
+                "column",
+                "row"
+            ],
+            "properties": {
+                "column": {
+                    "type": "string"
+                },
+                "row": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.SignupRequestDto": {
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "fibonacci-spiral-matrix-go_internal_api_handler.LoginPayload": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "fibonacci-spiral-matrix-go_internal_api_handler.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "jwt": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "string"
+                },
+                "userdetailsemail": {
+                    "type": "string"
+                },
+                "userdetailsid": {
+                    "type": "integer"
+                },
+                "userdetailsusername": {
+                    "type": "string"
+                }
+            }
+        },
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "internal_api_handler.LoginPayload": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "internal_api_handler.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "jwt": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "string"
+                },
+                "userdetailsemail": {
+                    "type": "string"
+                },
+                "userdetailsid": {
+                    "type": "integer"
+                },
+                "userdetailsusername": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.User": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

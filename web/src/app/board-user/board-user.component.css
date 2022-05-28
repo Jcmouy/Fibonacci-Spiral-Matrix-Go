@@ -1,0 +1,58 @@
+.mrgnbtm {
+    margin-top: 20px;
+}
+
+.form-Table {
+    border-spacing: 0;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: stretch;
+}
+
+.form-control {
+    display: inline;
+    width: auto;
+    border-radius: unset;
+    padding-top: 10px;
+    width: 100%;
+    height: max-content;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: stretch;
+}
+
+.labelTd {
+    background: #dbdbdb;
+    padding-right: 8px;
+    padding-left: 10px;
+}
+
+#buttonCalculate {
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: unset;
+    border-top-left-radius: unset;
+    padding-top: 9px;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: stretch;
+}
+
+#initalTd {
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 5%;
+}
+
+table {
+    border-collapse: collapse; /*added*/
+}
+
+td {
+    white-space: nowrap;
+    vertical-align: top;
+    height: 20px;
+}
